@@ -1,0 +1,185 @@
+/* ==========================================================================
+   1. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: 'Chivo', sans-serif;
+    background-color: #111;
+}
+
+
+/* ==========================================================================
+   2. REUSABLE NAVIGATION BAR STYLES (Used on all pages)
+   ========================================================================== */
+
+/* The distinct cream floating navigation bar box */
+.floating-cream-nav {
+    background-color: #fbf5ee; 
+    border-radius: 1px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
+    
+    /* CONTROL HERE: NAVBAR HEIGHT
+       Decrease the vertical padding (8px) to make the rectangle shorter. */
+    padding: 8px 0;
+
+    /* CONTROL HERE: NAVBAR WIDTH
+       Spans across the screen up to a clean maximum width. */
+    width: min(600px, 90%); 
+}
+
+/* Horizontally aligns list menu items */
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(2.5rem, 8vw, 4.5rem); 
+}
+
+/* Individual Link Typography using Chivo */
+.nav-links a {
+    color: #2c2c2c;
+    text-decoration: none;
+    font-weight: 700; 
+    font-size: 0.8rem; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #777777;
+}
+
+
+/* ==========================================================================
+   3. HOMEPAGE SPECIFIC STYLES (index.html)
+   ========================================================================== */
+
+/* Keeps homepage strictly framed to the screen viewport height */
+.homepage-body {
+    overflow: hidden; 
+}
+
+/* Base Canvas Background Setup for Homepage */
+.fullscreen-art-container {
+    background-image: url('hero-painting.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding-top: 8vh; 
+}
+
+/* Stacks the signature directly above the navbar on homepage */
+.branding-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    
+    /* CONTROL HERE: DISTANCE BETWEEN LOGO AND NAVBAR ON HOMEPAGE */
+    gap: 28px; 
+}
+
+/* Logo Image constraints for homepage */
+.logo-zone {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signature-img {
+    max-width: min(160px, 50vw); 
+    height: auto;
+}
+
+
+/* ==========================================================================
+   4. ARTICLES PAGES STYLES (articles.html & individual posts)
+   ========================================================================== */
+
+/* Separate body setup for articles to permit standard vertical scrolling */
+.articles-body {
+    min-height: 100vh;
+}
+
+/* Constant header background container for article environments */
+.articles-header-container {
+    background-image: url('articles-background.jpg');
+    background-repeat: no-repeat;
+    background-position: center top; /* Anchors the top of the painting imagery */
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding-top: 27px; 
+    padding-bottom: 25px; /* Leaves visual breathing room beneath the menu */
+}
+
+/* Vertical structural stack for split image zone and navbar */
+.articles-branding-overlay {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 25px; /* Space between the upper image row and the navigation bar */
+}
+
+/* Flex row setup aligning the two header graphics side-by-side */
+.split-logo-zone {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+    /* ------------------------------------------------------------
+       CONTROL HERE: DISTANCE BETWEEN THE TWO IMAGES
+       Change this value lower (e.g., 30px, 20px) to pull the 
+       Articles text and the signature closer together.
+       ------------------------------------------------------------ */
+    gap: 10px; 
+}
+
+/* Link structural reset for the banner images */
+.header-logo-link {
+    display: inline-flex;
+    text-decoration: none;
+}
+
+/* Standard baseline height handling for both custom split items */
+.header-graphic {
+    height: auto;
+    display: block;
+}
+
+/* Left-hand side: Articles Title Graphic size restriction */
+.articles-img {
+    max-width: min(150px, 40vw);
+}
+
+/* Right-hand side: Signature Graphic size restriction in split view */
+.signature-img-split {
+    max-width: min(140px, 40vw);
+}
+
+/* Optional wrapper block for rendering article grid cards/text fields below header */
+.articles-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #ffffff;
+}
