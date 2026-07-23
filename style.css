@@ -45,7 +45,7 @@ body, html {
 
 /* Individual Link Typography using Chivo */
 .nav-links a {
-    color: #2c2c2c;
+    color: #2c2c2c; /* Dark text for readability on the cream background */
     text-decoration: none;
     font-weight: 700; 
     font-size: 0.8rem; 
@@ -65,7 +65,9 @@ body, html {
 
 /* Keeps homepage strictly framed to the screen viewport height */
 .homepage-body {
-    overflow: hidden; 
+    /* overflow: hidden; <-- This is removed to allow scrolling to the new content area */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Base Canvas Background Setup for Homepage */
@@ -105,28 +107,54 @@ body, html {
     height: auto;
 }
 
+/* New white content area for the homepage */
+.homepage-content {
+    background-color: #ffffff;
+    color: #2c2c2c;
+    padding: 60px 20px;
+}
+
+/* Inner wrapper to control content width, similar to .articles-content */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-wrapper h2 {
+    margin-bottom: 1rem;
+}
 
 /* ==========================================================================
    4. ARTICLES PAGES STYLES (articles.html & individual posts)
    ========================================================================== */
-
+   
 /* Separate body setup for articles to permit standard vertical scrolling */
 .articles-body {
     min-height: 100vh;
 }
 
-/* Constant header background container for article environments */
-.articles-header-container {
-    background-image: url('articles-background.jpg');
+/* Shared styles for the headers on the Museum and Articles pages */
+.page-header-container {
     background-repeat: no-repeat;
-    background-position: center top; /* Anchors the top of the painting imagery */
     background-size: cover;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start; 
     padding-top: 27px; 
-    padding-bottom: 25px; /* Leaves visual breathing room beneath the menu */
+    padding-bottom: 25px;
+}
+
+/* Unique background for the Articles header */
+.articles-header-container {
+    background-image: url('articles-background.jpg');
+    background-position: center top; /* Anchors the top of the painting imagery */
+}
+
+/* Unique background for the Museum header */
+.museum-header-container {
+    background-image: url('museum-background.jpg');
+    background-position: center center;
 }
 
 /* Vertical structural stack for split image zone and navbar */
@@ -162,12 +190,17 @@ body, html {
 
 /* Standard baseline height handling for both custom split items */
 .header-graphic {
-    height: auto;
+    height: 35px; /* Sets a fixed height for all header graphics */
     display: block;
 }
 
 /* Left-hand side: Articles Title Graphic size restriction */
 .articles-img {
+    max-width: min(150px, 40vw);
+}
+
+/* Museum Title Graphic size restriction */
+.museum-img {
     max-width: min(150px, 40vw);
 }
 
@@ -182,4 +215,44 @@ body, html {
     margin: 40px auto;
     padding: 0 20px;
     color: #ffffff;
+}
+
+/* ==========================================================================
+   5. REUSABLE FOOTER STYLES (Used on all pages)
+   ========================================================================== */
+
+.site-footer {
+    background-color: #fbf5ee; /* Same cream color as the navbar */
+    padding: 25px min(5%, 40px); /* Vertical and horizontal padding */
+    margin-top: auto; /* Pushes footer to the bottom in flex-column layouts */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allows items to wrap on small screens */
+    gap: 20px;
+}
+
+.footer-socials {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between icons */
+}
+
+.footer-socials a {
+    display: inline-flex;
+}
+
+.footer-socials img {
+    height: 24px; /* Sets a consistent height for all social icons */
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.footer-socials img:hover {
+    opacity: 1;
+}
+
+.footer-logo-link img {
+    max-height: 30px; /* Controls the size of the signature in the footer */
 }
